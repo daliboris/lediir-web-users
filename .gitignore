@@ -1,0 +1,4 @@
+build
+*local*
+*.code-workspace
+*.xstrc

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${package(version)}" default="xar">
+    <xmlproperty file="expath-pkg.xml"/>
+    <property name="project.version" value="${package(version)}"/>
+    <property name="project.app" value="${package(abbrev)}"/>
+    <property name="build.dir" value="build"/>
+    <target name="xar" depends="repo.prepare">
+        <mkdir dir="${build.dir}"/>
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir} ${build.dir}/* .existdb.json *.xstrc local* .vscode .vscode/*"/>
+        <copy file="${build.dir}/${project.app}-${project.version}.xar" tofile="${build.dir}/${project.app}.xar" overwrite="true"/>
+        <antcall target="repo.clean" />
+    </target>
+ 
+    <target name="repo.prepare">
+     <move file="repo.xml" tofile="local.repo.xml"  overwrite="true"/>
+     <xslt style="secrets.xsl" in="local.repo.xml" out="repo.xml">
+      <param name="phase" expression="prepare"/>
+     </xslt>
+    </target>
+ 
+   <target name="repo.clean">
+    <move file="local.repo.xml" tofile="repo.xml" overwrite="true"/>
+   </target>
+
+</project>
