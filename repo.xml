@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Elektronické lexikální databáze indoíránských jazyků: uživatelé</description>
+    <author>Boris Lehečka</author>
+    <website>https://eldi.soc.cas.cz/</website>
+    <status>beta</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>library</type>
+    <target>lediir-users</target>
+    <!-- <prepare>pre-install.xql</prepare> -->
+    <finish>post-install.xql</finish><!-- used for creating additional users -->
+    <!-- will be replaced by local.secrets.xsl during ANT build -->
+    <permissions /> 
+    <changelog>
+        <change version="0.1.0">
+            <ul xmlns="http://www.w3.org/1999/xhtml">
+                <li>creates a users who belongs to the tei and guest group</li>
+            </ul>
+        </change>
+    </changelog>
+</meta>
